@@ -7,8 +7,10 @@ const StockTable = require('./stock-table.js')
   const page = await browser.newPage()
   await page.goto(process.argv[2])
   const stockTable = new StockTable(page)
+  // スクリーニング結果の表のページネーションの最初のページをスクレイピングする
   await stockTable.setCompanyCodes()
   await stockTable.setNextButton()
+  // ページネーションの次へ進むボタンが消える最終ページまで各ページをスクレイピングする
   while (stockTable.nextButton) {
     await stockTable.nextButton.click()
     await stockTable.setCompanyCodes()
