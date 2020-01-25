@@ -5,7 +5,7 @@ const StockTable = require('./stock-table.js')
 ;(async () => {
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  await page.goto(process.argv[2], { waitUntil: 'networkidle2' })
+  await page.goto(process.argv[2])
   const stockTable = new StockTable(page)
   await stockTable.setCompanyCodes()
   await stockTable.setNextButton()
