@@ -6,13 +6,8 @@ module.exports = class StockTable {
   
   // スクリーニング結果の表の証券コードを取得してthis.companyCodesの配列に追加する
   async setCompanyCodes() {
-    const elementHandles = await this.page.$$('.KM_CODE')
-    for (const handle of elementHandles) {
-      const companyCode = await this.page.evaluate((handle) => {
-        return handle.innerText
-      }, handle)
-      this.companyCodes.push(companyCode)
-    }
+    const companyCodes = await this.page.$$eval('.KM_CODE', (nodes) => nodes.map((node) => node.innerText))
+    this.companyCodes.push(...companyCodes)
   }
   
   // ページネーションの次へ進むボタンのElementHandleを取得する
