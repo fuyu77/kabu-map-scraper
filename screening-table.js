@@ -1,4 +1,4 @@
-module.exports = class StockTable {
+module.exports = class ScreeningTable {
   constructor(page) {
     this.page = page
     this.companyCodes = []
