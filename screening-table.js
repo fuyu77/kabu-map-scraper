@@ -10,8 +10,8 @@ module.exports = class ScreeningTable {
     this.companyCodes.push(...companyCodes)
   }
   
-  // ページネーションの次へ進むボタンのElementHandleを取得する
-  // 次へボタンが存在しない（ページネーションの終端の）場合、nullを返す
+  // ページネーションの次へ進むボタンのElementHandleをthis.nextButtonに代入する
+  // 次へボタンが存在しない（ページネーションの終端の）場合、nullが代入される
   async setNextButton() {
     this.nextButton = await this.page.$('.KM_TABLEINDEXNEXT')
   }
