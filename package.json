@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "puppeteer": ">=2.1.1"
+    "puppeteer": ">=2.1.1",
+    "acorn": ">=7.1.1",
+    "minimist": ">=1.2.2"
   },
   "devDependencies": {
     "babel-eslint": ">=10.1.0",
