@@ -18,14 +18,26 @@ const ScreeningTable = require('./screening-table.js')
   }
   await browser.close()
   console.log(screeningTable.companyCodes)
-  const ngCompanyCodes = fs.readFileSync(`${process.argv[3]}-ng.txt`, 'utf8').split('\n')
-  const recommendedCompanyCodes = fs.readFileSync(`${process.argv[3]}-recommended.txt`, 'utf8').split('\n')
+  const ngCompanyCodes = fs
+    .readFileSync(`${process.argv[3]}-ng.txt`, 'utf8')
+    .split('\n')
+  const recommendedCompanyCodes = fs
+    .readFileSync(`${process.argv[3]}-recommended.txt`, 'utf8')
+    .split('\n')
   console.log(ngCompanyCodes)
   console.log(recommendedCompanyCodes)
-  const currentRecommendedCompanyCodes = recommendedCompanyCodes.filter((code) => screeningTable.companyCodes.includes(code))
+  const currentRecommendedCompanyCodes = recommendedCompanyCodes.filter(
+    (code) => screeningTable.companyCodes.includes(code)
+  )
   console.log(currentRecommendedCompanyCodes)
-  const deprecatedCompanyCodes = recommendedCompanyCodes.filter((code) => !currentRecommendedCompanyCodes.includes(code))
+  const deprecatedCompanyCodes = recommendedCompanyCodes.filter(
+    (code) => !currentRecommendedCompanyCodes.includes(code)
+  )
   console.log(deprecatedCompanyCodes)
-  const newRecommendedCompanyCodes = screeningTable.companyCodes.filter((code) => !ngCompanyCodes.includes(code) && !currentRecommendedCompanyCodes.includes(code))
+  const newRecommendedCompanyCodes = screeningTable.companyCodes.filter(
+    (code) =>
+      !ngCompanyCodes.includes(code) &&
+      !currentRecommendedCompanyCodes.includes(code)
+  )
   console.log(newRecommendedCompanyCodes)
 })()
